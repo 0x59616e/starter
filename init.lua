@@ -35,3 +35,21 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+-- Enable clipboard support
+vim.opt.clipboard = "unnamedplus"
+
+-- Configure clipboard provider to use xclip
+vim.g.clipboard = {
+  name = 'xclip',
+  copy = {
+    ['+'] = 'xclip -selection clipboard',
+    ['*'] = 'xclip -selection clipboard',
+  },
+  paste = {
+    ['+'] = 'xclip -selection clipboard -o',
+    ['*'] = 'xclip -selection clipboard -o',
+  },
+  cache_enabled = 0,
+}
+
+-- Your existing configuration goes here
